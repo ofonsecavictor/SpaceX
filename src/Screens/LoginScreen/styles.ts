@@ -8,7 +8,7 @@ export const Container = styled.SafeAreaView`
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
+    background-color: #0a0a0a;
 `;
 
 export const Logo = styled.Image`
@@ -30,6 +30,6 @@ export const ContentText = styled.View`
 export const Text = styled.Text<styledProps>`
     margin-top: 10px;
     font-size: 14px;
-    color: ${({ link }: styledProps) => (link ? '#4287f5' : '#000')};
+    color: ${({ link }: styledProps) => (link ? '#4287f5' : '#fff')};
     margin-left: ${({ link }: styledProps) => (link ? '10px' : '10px')};
 `;
