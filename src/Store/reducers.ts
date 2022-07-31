@@ -22,5 +22,6 @@ function modalReducer(state = initialState, action: ModalAction) {
     }
 }
 
-export const rootReducer = combineReducers({ modal: modalReducer });
+const rootReducer = combineReducers({ modal: modalReducer });
 export type RootState = ReturnType<typeof rootReducer>;
+export default rootReducer;
