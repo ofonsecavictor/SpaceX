@@ -13,6 +13,7 @@ export interface LaunchPaginationProps {
 }
 
 export interface LaunchProps {
+    filter: { (item: {}): LaunchProps };
     fairings: Fairings;
     links: Links;
     static_fire_date_utc: Date;

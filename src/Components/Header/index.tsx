@@ -20,16 +20,20 @@ type NavigationParam = NativeStackNavigationProp<
 export function Header({ onChangeText, value, back }: Header) {
     const navigation = useNavigation<NavigationParam>();
     return (
-        <S.Container>
-            {back ? (
-                <S.Back
-                    onPress={() => navigation.goBack()}
-                    hitSlop={{ top: 30, bottom: 30, left: 30, right: 80 }}>
-                    <S.Icons name="chevron-back" color="white" size={24} />
-                </S.Back>
-            ) : null}
-            <S.Logo source={require('../../Assets/SpaceX-Logo.png')} />
-            <SearchBar onChangeText={onChangeText} value={value} />
-        </S.Container>
+        <>
+            <S.Container row>
+                {back && (
+                    <S.Back
+                        onPress={() => navigation.goBack()}
+                        hitSlop={{ top: 30, bottom: 30, left: 30, right: 80 }}>
+                        <S.Icons name="chevron-back" color="white" size={24} />
+                    </S.Back>
+                )}
+                <S.Logo source={require('../../Assets/SpaceX-Logo.png')} />
+            </S.Container>
+            {onChangeText && (
+                <SearchBar onChangeText={onChangeText} value={value} />
+            )}
+        </>
     );
 }
