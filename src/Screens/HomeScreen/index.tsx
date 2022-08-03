@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import React, { useState } from 'react';
+import React from 'react';
 import { StatusBar } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 import * as C from '../../Components';
+import { useSearch } from '../../Contexts';
 import { LaunchProps } from '../../Hooks/lauches';
 import { useRecentLaunches } from '../../Hooks/useLaunches';
 
@@ -18,26 +19,7 @@ type NavigationParam = NativeStackNavigationProp<
 export function HomeScreen() {
     const navigation = useNavigation<NavigationParam>();
     const { data: launches, isLoading } = useRecentLaunches();
-    const [search, setSearch] = useState('');
-    const [filteredData, setFilteredData] = useState<LaunchProps>();
-
-    const searchFilterFunction = (text: string) => {
-        console.log(text);
-        if (text) {
-            const newData = launches.filter(function (item: { name: string }) {
-                const itemData = item.name
-                    ? item.name.toUpperCase()
-                    : ''.toUpperCase();
-                const textData = text.toUpperCase();
-                return itemData.indexOf(textData) > -1;
-            });
-            setFilteredData(newData);
-            setSearch(text);
-        } else {
-            setFilteredData(launches);
-            setSearch(text);
-        }
-    };
+    const { filteredData, searchFilterFunction, search } = useSearch();
 
     return (
         <S.Container>
@@ -55,7 +37,7 @@ export function HomeScreen() {
                 <S.List
                     data={filteredData ? filteredData : launches}
                     showsVerticalScrollIndicator={false}
-                    keyExtractor={({ id }: LaunchProps[]) => id}
+                    keyExtractor={({ id }: LaunchProps) => id}
                     scrollEventThrottle={16}
                     onEndReachedThreshold={0.5}
                     initialNumToRender={20}
