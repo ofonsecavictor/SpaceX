@@ -6,6 +6,7 @@ This project was developed using the following technologies:
 - [Typescript][typescript]
 - [Styled Components][styled]
 - [Rect Query][reactquery]
+- [Context Api][contextapi]
 - [React Navigation][navigation]
 - [React Native Paper][paper]
 ## 🚀 Run the project
@@ -51,4 +52,5 @@ by Victor Fonseca 👋🏽
 [styled]:https://styled-components.com/
 [reactquery]: https://react-query-v2.tanstack.com/
 [navigation]: https://reactnavigation.org/
+[contextapi]: https://pt-br.reactjs.org/docs/context.html
 [paper]: https://callstack.github.io/react-native-paper/
