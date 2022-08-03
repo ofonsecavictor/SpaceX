@@ -2,6 +2,7 @@ import React from 'react';
 import { StatusBar, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ApiSearchProvider } from './src/Contexts';
 
 import { Routes } from './src/Routes/routes';
 Icon.loadFont();
@@ -16,9 +17,10 @@ export default function App() {
                 backgroundColor="transparent"
                 translucent
             />
-
             <QueryClientProvider client={queryClient}>
-                <Routes />
+                <ApiSearchProvider>
+                    <Routes />
+                </ApiSearchProvider>
             </QueryClientProvider>
         </View>
     );
